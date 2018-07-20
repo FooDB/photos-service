@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PhotoItem = ({item}) => {
+const PhotoItem = ({photo}) => {
   return (
     <div>
-      <img src={item} />
+      <img src={photo} />
 
     </div>
   );

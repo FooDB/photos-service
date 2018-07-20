@@ -29,7 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <PhotoList list = {this.state.photos} />
+        <PhotoList photos={this.state.photos} />
       </div>
     )
   }
