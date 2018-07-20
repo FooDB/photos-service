@@ -6,25 +6,19 @@ mongoose.connect('mongodb://localhost/photos');
 
 const fillPhotoUrls = () => {
 
-  var photoUrls = [];
+  let photoUrls = [];
   
-  var amazonUrl = [];
+  let amazonUrl = [];
   
-  for (var i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i++) {
     amazonUrl.push(`https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food${i}.jpg`);
   }
-  //console.log('length of amazonUrl ', amazonUrl);
   
-  var numberOfPhotos = Math.floor(Math.random() * 100);
-  
-  //console.log('numberOfPhotos: ', numberOfPhotos);
-  
-  for (var i = 0; i <= numberOfPhotos; i++) {
+  let numberOfPhotos = Math.floor(Math.random() * 100);
+    
+  for (let i = 0; i <= numberOfPhotos; i++) {
     photoUrls.push(amazonUrl[Math.floor(Math.random() * amazonUrl.length)]);
   }
-  
-  //console.log('photoUrls:', photoUrls);
-  //console.log('photoUrls length: ', photoUrls.length);
 
   return photoUrls;
 }
