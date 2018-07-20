@@ -4,6 +4,31 @@ const faker = require('faker');
 
 mongoose.connect('mongodb://localhost/photos');
 
+const fillPhotoUrls = () => {
+
+  var photoUrls = [];
+  
+  var amazonUrl = [];
+  
+  for (var i = 0; i < 50; i++) {
+    amazonUrl.push(`https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food${i}.jpg`);
+  }
+  //console.log('length of amazonUrl ', amazonUrl);
+  
+  var numberOfPhotos = Math.floor(Math.random() * 100);
+  
+  //console.log('numberOfPhotos: ', numberOfPhotos);
+  
+  for (var i = 0; i < numberOfPhotos; i++) {
+    photoUrls.push(amazonUrl[Math.floor(Math.random() * amazonUrl.length)]);
+  }
+  
+  //console.log('photoUrls:', photoUrls);
+  //console.log('photoUrls length: ', photoUrls.length);
+
+  return photoUrls;
+}
+
 const generateData = () => {
 
   let photoSchema = mongoose.Schema({
@@ -11,7 +36,7 @@ const generateData = () => {
     restaurantId: Number,
     description: String,
     createdAt: {type: Date},
-    photo: String
+    photoUrls: Array
   });
 
   let Photo = mongoose.model('Photo', photoSchema);
@@ -23,7 +48,7 @@ const generateData = () => {
     photoObj.restaurantId = i;
     photoObj.description = faker.commerce.productName();
     photoObj.createdAt = faker.date.past();
-    photoObj.photo = faker.image.food();
+    photoObj.photoUrls = fillPhotoUrls();
   
     let newPhoto = new Photo(photoObj);
     newPhoto.save((err) => {
