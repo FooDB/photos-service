@@ -7,4 +7,3 @@ db.once('open', () => {
   console.log('connected to db');
 });
 
-

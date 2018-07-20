@@ -55,4 +55,23 @@ const generateData = () => {
   };
 }
 
+const getPhotos = (callback) => {
+  let Photo = mongoose.model('Photo');
+  
+  Photo.find((err, results) => {
+    if(err) {
+      console.log('ERR');
+    } else {
+      console.log('posted');
+      callback(results);
+    }
+  })
+  .limit(1);
+}
+
 generateData();
+
+
+module.exports = {
+  getPhotos
+}
