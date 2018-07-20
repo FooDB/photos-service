@@ -10,7 +10,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "seed": "node database/dataGenerator.js"
+    "seed": "node data-seed/dataGenerator.js"
   },
   "dependencies": {
     "aws-sdk": "^2.278.1",
@@ -22,6 +22,7 @@
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",

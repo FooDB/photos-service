@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
+const Photo = require('../database/index.js')
 
-
-mongoose.connect('mongodb://localhost/photos');
-
-const fillPhotoUrls = () => {
+let fillPhotoUrls = () => {
 
   let photoUrls = [];
   
@@ -23,17 +21,7 @@ const fillPhotoUrls = () => {
   return photoUrls;
 }
 
-const generateData = () => {
-
-  let photoSchema = mongoose.Schema({
-    username: String,
-    restaurantId: Number,
-    description: String,
-    createdAt: {type: Date},
-    photoUrls: Array
-  });
-
-  let Photo = mongoose.model('Photo', photoSchema);
+let generateData = () => {
 
   for (let i = 0; i < 100; i++) {
     let photoObj = {};
