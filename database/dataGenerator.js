@@ -19,7 +19,7 @@ const fillPhotoUrls = () => {
   
   //console.log('numberOfPhotos: ', numberOfPhotos);
   
-  for (var i = 0; i < numberOfPhotos; i++) {
+  for (var i = 0; i <= numberOfPhotos; i++) {
     photoUrls.push(amazonUrl[Math.floor(Math.random() * amazonUrl.length)]);
   }
   
