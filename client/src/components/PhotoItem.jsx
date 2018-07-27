@@ -1,11 +1,12 @@
 import React from 'react';
 
-const PhotoItem = ({photo}) => {
+const PhotoItem = ({index, photo}) => {
   return (
-    <div>
-      <img src={photo} />
-
-    </div>
+      <div className={`item item-${index}`}>
+        <div className='photo'>
+          <img src={photo} />
+        </div>
+      </div>
   );
 };
 
