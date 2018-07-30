@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import PhotoList from './PhotoList.jsx';
@@ -8,39 +9,73 @@ class App extends React.Component {
   	super(props);
 
     this.state = {
-      photos: [
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food22.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food23.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food24.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food25.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food26.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food27.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food28.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food29.jpg",
-        "https://s3-us-west-1.amazonaws.com/fec5-restaurant-photos/food30.jpg"
-      ]
+      photos: [],
+      showComponent: false,
+      currentIndex: 0,
+    };
+    this.onImgClick = this.onImgClick.bind(this);
+    this.previousSlide = this.previousSlide.bind(this);
+    this.nextSlide = this.nextSlide.bind(this);
+  }
+
+  componentDidMount() {
+    this.getRestaurantPhotos();
+  }
+
+  getRestaurantPhotos() {
+    let restaurantId = Math.floor(Math.random() * 100);
+    //`/${restaurantId}/photos`
+
+    axios.get('/restaurantId/photos')
+    .then(results => this.setState({photos: results.data}))
+    .catch(err => console.log('ERROR', err));
+  }
+
+  previousSlide() {
+    if(this.state.currentIndex !== 0) {
+
+      const lastIndex = this.state.photos.length - 1;
+      const {currentIndex} = this.state;
+      const shouldResetIndex = (currentIndex === 0);
+      const index = shouldResetIndex ? lastIndex : currentIndex - 1;
+  
+      this.setState({
+        currentIndex: index,
+      });
     }
   }
 
-  // componentDidMount() {
-  //   this.getRestaurantPhotos();
-  // }
+  nextSlide() {
+    if(this.state.currentIndex !== this.state.photos.length - 1) {
+      const lastIndex = this.state.photos.length - 1;
+      const {currentIndex} = this.state;
+      const shouldResetIndex = (currentIndex === lastIndex);
+      const index = shouldResetIndex ? 0 : currentIndex + 1;
+  
+      this.setState({
+        currentIndex: index
+      });
+    }
+  }
 
-  // getRestaurantPhotos() {
-
-  //   let restaurantId = Math.floor(Math.random() * 100);
-  //   //`/${restaurantId}/photos`
-
-  //   axios.get('/restaurantId/photos')
-  //   .then(results => this.setState({photos: results.data}))
-  //   .catch(err => console.log('ERROR', err));
-  // }
+  onImgClick(event) {
+    event.preventDefault();
+    const target = event.target.getAttribute('data-target');
+    if (target) {
+      const modal = document.getElementById(target);
+      modal.classList.toggle('modal-opacity');
+      setTimeout( (modal) => {
+        modal.classList.toggle('modal-on');
+      }, 400, modal );
+      document.body.classList.toggle('overflow-hidden');
+    }
+  }
 
   render() {
     return (
       <div className="photos-gallery">
-        <h2 className="photos-gallery-header"> 3 Photos </h2>
-        <PhotoList photos={this.state.photos} />
+        <h2 className="photos-gallery-header"> {this.state.photos.length} Photos </h2>
+        <PhotoList photos={this.state.photos} previousSlide={this.previousSlide} url={this.state.photos[this.state.currentIndex]} nextSlide={this.nextSlide} onImgClick={this.onImgClick} />
       </div>
     )
   }
