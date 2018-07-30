@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import ImageSlide from './ImageSlide.jsx';
 import Arrow from './Arrow.jsx';
+import Close from './Close.jsx';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -18,26 +19,35 @@ class Carousel extends React.Component {
   }
 
   previousSlide() {
-  	const lastIndex = imgUrls.length - 1;
-  	const {currentIndex} = this.state;
-  	const shouldResetIndex = (currentIndex === 0);
-  	const index = shouldResetIndex ? lastIndex : currentIndex - 1;
+    if(this.state.currentIndex !== 0) {
 
-  	this.setState({
-  	  currentIndex: index,
-  	});
+  	  const lastIndex = this.state.photos.length - 1;
+  	  const {currentIndex} = this.state;
+  	  const shouldResetIndex = (currentIndex === 0);
+  	  const index = shouldResetIndex ? lastIndex : currentIndex - 1;
+  
+  	  this.setState({
+  	    currentIndex: index,
+  	  });
+    }
   }
 
   nextSlide() {
-  	console.log('clicked');
-  	const lastIndex = imgUrls.length - 1;
-  	const {currentIndex} = this.state;
-  	const shouldResetIndex = (currentIndex === lastIndex);
-  	const index = shouldResetIndex ? 0 : currentIndex + 1;
+    if(this.state.currentIndex !== this.state.photos.length - 1) {
 
-  	this.setState({
-  	  currentIndex: index
-  	});
+  	  const lastIndex = this.state.photos.length - 1;
+  	  const {currentIndex} = this.state;
+  	  const shouldResetIndex = (currentIndex === lastIndex);
+  	  const index = shouldResetIndex ? 0 : currentIndex + 1;
+  
+  	  this.setState({
+  	    currentIndex: index
+  	  });
+    }
+  }
+
+  closeCarousel() {
+    
   }
 
   componentDidMount() {
@@ -57,9 +67,10 @@ class Carousel extends React.Component {
   render() {
     return (
       <div className="carousel">
-        <Arrow direction="left" clickFunction={this.previousSlide} glyph="&#9664;" />
+        <Arrow direction="left" clickFunc={this.previousSlide} glyph="&#9664;" />
         <ImageSlide url={this.state.photos[this.state.currentIndex]} />
-        <Arrow direction="right" clickFunction={this.nextSlide} glyph="&#9654;" />
+        <Arrow direction="right" clickFunc={this.nextSlide} glyph="&#9654;" />
+        <Close clickFunc={this.closeCarousel} glyph="&#x2717;" />
       </div>
     );
   }
