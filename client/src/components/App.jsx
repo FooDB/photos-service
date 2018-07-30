@@ -74,7 +74,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="photos-gallery">
-        <h2 className="photos-gallery-header"> {this.state.photos.length} Photos </h2>
+        <h2 className="photos-gallery-header"> 
+          {this.state.photos.length} Photos 
+          <a href="" className="photos-gallery-header-subtext" data-target="popup" onClick={this.onImgClick}> View more </a>
+        </h2>
         <PhotoList photos={this.state.photos} previousSlide={this.previousSlide} url={this.state.photos[this.state.currentIndex]} nextSlide={this.nextSlide} onImgClick={this.onImgClick} />
       </div>
     )

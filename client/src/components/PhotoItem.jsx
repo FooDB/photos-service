@@ -17,7 +17,8 @@ const PhotoItem = (props) => {
             <Arrow direction="left" clickFunc={props.previousSlide} glyph="&#9664;" />
             <ImageSlide url={props.url} />
             <Arrow direction="right" clickFunc={props.nextSlide} glyph="&#9654;" />
-            <Close clickFunc={props.onImgClick} glyph="&#x2717;"  />
+            <Close clickFunc={props.onImgClick} glyph="&#9747;"  />
+            <div className="flag">&#9872;</div>
           </div>
         </div>
       </div>
