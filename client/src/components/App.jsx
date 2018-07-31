@@ -16,6 +16,7 @@ class App extends React.Component {
     this.onImgClick = this.onImgClick.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
+    this.onFlagClick = this.onFlagClick.bind(this);
   }
 
   componentDidMount() {
@@ -63,11 +64,28 @@ class App extends React.Component {
     const target = event.target.getAttribute('data-target');
     if (target) {
       const modal = document.getElementById(target);
+      console.log('modal', modal);
+
       modal.classList.toggle('modal-opacity');
       setTimeout( (modal) => {
         modal.classList.toggle('modal-on');
       }, 400, modal );
-      document.body.classList.toggle('overflow-hidden');
+      document.body.classList.toggle('carousel-overflow-hidden');
+    }
+  }
+
+  onFlagClick(event) {
+    event.preventDefault();
+    const target = event.target.getAttribute('data-target');
+    if (target) {
+      const modal = document.getElementById(target);
+      console.log('modal', modal);
+
+      modal.classList.toggle('modal-opacity');
+      setTimeout( (modal) => {
+        modal.classList.toggle('modal-on');
+      }, 400, modal );
+      document.body.classList.toggle('problem-overflow-hidden');
     }
   }
 
@@ -78,7 +96,7 @@ class App extends React.Component {
           {this.state.photos.length} Photos 
           <a href="" className="photos-gallery-header-subtext" data-target="popup" onClick={this.onImgClick}> View more </a>
         </h2>
-        <PhotoList photos={this.state.photos} previousSlide={this.previousSlide} url={this.state.photos[this.state.currentIndex]} nextSlide={this.nextSlide} onImgClick={this.onImgClick} />
+        <PhotoList photos={this.state.photos} previousSlide={this.previousSlide} url={this.state.photos[this.state.currentIndex]} nextSlide={this.nextSlide} onImgClick={this.onImgClick} onFlagClick={this.onFlagClick} />
       </div>
     )
   }

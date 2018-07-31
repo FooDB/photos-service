@@ -105,8 +105,8 @@
   color: #333;
   cursor: default;
   margin: 0 auto;
-  max-width: 400px;
-  height: 360px;
+  max-width: 640px;
+  height: 640px;
   overflow-y: scroll;
   padding: 24px;
   position: absolute; top: 50%; left: 31.5%;
@@ -116,17 +116,17 @@
 }
 
 .image-slide {
-  width: 300px;
-  height: 300px;
+  width: 550px;
+  height: 550px;
   margin: 0 auto;
 }
 
 .image-slide img {
-  width: 300px;
-  height: 300px;
+  width: 550px;
+  height: 550px;
 }
 
-body.overflow-hidden {
+body.carousel-overflow-hidden {
   overflow: hidden;
 }
 
@@ -165,7 +165,7 @@ body.overflow-hidden {
   color: white;
   font-size: 1.2rem;
   line-height: 2;
-  position: absolute; left: 93%;
+  position: absolute; left: 96.5%;
   text-align: center;
   top: 1rem;
   right: 1rem;
@@ -174,6 +174,77 @@ body.overflow-hidden {
 
 .flag {
   font-size: 2rem;
-  position: absolute; left: 82%;
+  position: absolute; left: 90%;
   color: white;
 }
+
+.problem-modal {
+  /*background-color: rgba(0,0,0,0.92);*/
+  cursor: pointer;
+  opacity: 0;
+  position: fixed; top: 0; left: 0;
+  transition: 0.4s opacity ease-in-out;
+  visibility: hidden;
+  width: 0; height: 0;
+}
+.problem-modal.modal-opacity,
+.problem-modal.modal-on {
+  bottom: 0; right: 0;
+  padding: 15px;
+  visibility: visible;
+  width: auto; height: auto;
+}
+.problem-modal.modal-opacity {
+  opacity: 1;
+}
+.probelm-modal.modal-on {
+  transition: 0s all ease 0.4s,
+    0.4s opacity ease-in-out 0s;
+}
+
+.problem-modal-content {
+  background-color: white;
+  /*box-shadow: 0 1px 4px rgba(0,0,0,0.5);*/
+  box-sizing: border-box;
+  color: #333;
+  cursor: default;
+  margin: 0 auto;
+  max-width: 450px;
+  height: 280px;
+  overflow-y: scroll;
+  padding: 24px;
+  position: absolute; top: 65%; left: 31.5%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 24px);
+  border: 0;
+}
+
+body.problem-overflow-hidden {
+  overflow: hidden;
+}
+
+.btn-photos-report, .btn-photos-cancel {
+  display: block;
+  width: 90%;
+  margin: 5px auto;
+  padding: .6rem 1.75rem;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 1rem;
+}
+
+.btn-photos-report {
+  background-color: #60b2d0;
+  border-color: #3798bc;
+  color: #fff;
+  border-width: 0;
+}
+.btn-photos-cancel {
+  background-color: #fff;
+  border-color: #3798bc;
+  color: #3798bc;
+  border-width: .05rem;
+}
+
+
+

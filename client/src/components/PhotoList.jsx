@@ -11,7 +11,7 @@ const PhotoList = (props) => {
   return (
     <div className="photos-gallery-content">
       {grid.map((photo, index) => 
-        <PhotoItem key={index} index={index} photo={photo} previousSlide={props.previousSlide} url={props.url} nextSlide={props.nextSlide} onImgClick={props.onImgClick} />
+        <PhotoItem key={index} index={index} photo={photo} previousSlide={props.previousSlide} url={props.url} nextSlide={props.nextSlide} onImgClick={props.onImgClick} onFlagClick={props.onFlagClick} />
       )}
     </div>
   );
