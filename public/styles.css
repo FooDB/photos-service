@@ -1,4 +1,8 @@
 .photos-gallery {
+  padding: 0rem 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
   height: 275px;
   width: 634px;
 }
@@ -26,7 +30,7 @@
 }
 
 .photos-gallery .photos-gallery-morePhotos {
-  position: absolute; top: 228px; left: 564px;
+  position: absolute; top: 270px; left: 777px;
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;

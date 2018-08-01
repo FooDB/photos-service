@@ -19,9 +19,13 @@ module.exports = {
           presets: ['react', 'env'],
         },
       },
+      {
+        test: /\.css/,
+        loaders: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['.jsx', '.js']
-  }
+    extensions: ['.jsx', '.js'],
+  },
 };
