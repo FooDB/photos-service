@@ -13,7 +13,11 @@ app.get('/restaurant/photos/:restaurantId', (req, res) => {
   const id = Number(req.params.restaurantId);
   db.getPhotos(id, (err, restaurant) => {
     if (err) {
-      res.status(500).send();
+      if (err === 404) {
+        res.status(404).send('Not Found');
+      } else {
+        res.status(500).send('ERR', err);
+      }
     } else {
       res.send(restaurant[0].photoUrls);
     }

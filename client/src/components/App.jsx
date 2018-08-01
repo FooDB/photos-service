@@ -11,7 +11,6 @@ class App extends React.Component {
 
     this.state = {
       photos: [],
-      showComponent: false,
       currentIndex: 0,
     };
     this.onImgClick = this.onImgClick.bind(this);
