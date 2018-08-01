@@ -84,9 +84,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="photos-gallery">
-        <a className="photos-gallery-morePhotos" href="" data-id="8" data-target="popup" onClick={this.onImgClick}>
-          + {this.state.photos.length - 9} more
-        </a>
         <h2 className="photos-gallery-header">
           { this.state.photos.length }&nbsp;Photos
           <a href="" className="photos-gallery-header-subtext" data-id="8" data-target="popup" onClick={this.onImgClick}>
