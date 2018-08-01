@@ -1,15 +1,23 @@
 const express = require('express');
 const path = require('path');
-const db = require('../database/retrievePhoto.js')
+const db = require('../database/retrievePhoto.js');
+
 const app = express();
 
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.use('/restaurant/:id', express.static('public'));
 
 
-app.get('/restaurantId/photos', (req, res) => {
-  db.getPhotos((restaurant) => {
-    res.json(restaurant[0].photoUrls);
-  })
+app.get('/restaurant/photos/:restaurantId', (req, res) => {
+  const id = Number(req.params.restaurantId);
+  db.getPhotos(id, (err, restaurant) => {
+    if (err) {
+      res.status(500).send();
+    } else {
+      res.send(restaurant[0].photoUrls);
+    }
+  });
 });
 
-app.listen(3002, () => console.log('Listening on 3002....'));
+module.exports = app;

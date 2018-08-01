@@ -25,6 +25,16 @@
   text-decoration: none;
 }
 
+.photos-gallery .photos-gallery-morePhotos {
+  position: absolute; top: 228px; left: 564px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .photos-gallery-content {
   display: grid;
   grid-template-columns: 20% 50% 15% 15%;
@@ -61,6 +71,10 @@
   grid-row-end: span 3;
 }
     
+/*.photos-gallery-content .item-8 {
+  opacity: 0.6;
+}
+*/
 .photo,
 .photo img {
   height: 100%;
@@ -71,9 +85,6 @@
   object-fit: cover;
 }
 
-/*.modal-content div {
-  display: inline-block;
-}*/
 
 .modal {
   background-color: rgba(0,0,0,0.92);

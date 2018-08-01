@@ -1,19 +1,18 @@
-const mongoose = require('mongoose');
-const Photo = require('./index.js')
+const Photo = require('./index.js');
 
-let getPhotos = (callback) => {
-  Photo.find((err, results) => {
-    if(err) {
-      console.log('ERR', err);
+const getPhotos = (id, callback) => {
+  Photo.find({ restaurantId: id }, (err, results) => {
+    if (err) {
+      console.log('ERROR', err);
+      callback(err);
     } else {
       console.log('posted');
-      callback(results);
+      callback(null, results);
     }
-  })
-  .limit(1);
-}
+  });
+};
 
 
 module.exports = {
-  getPhotos
-}
+  getPhotos,
+};
