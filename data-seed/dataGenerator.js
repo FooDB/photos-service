@@ -35,7 +35,7 @@ class DataGenerator {
     }
     Promise.all(this.data)
       .then((results) => {
-        console.log('complete data seeding', results);
+        console.log('complete data seeding');
       })
       .catch((err) => {
         console.log(err);
