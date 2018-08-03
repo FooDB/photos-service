@@ -3,7 +3,7 @@ version: '3'
 services:
   photos:
     build: .
-    command: "npm run start"
+    command: "npm run load"
     depends_on:
       - "database"
     ports:
