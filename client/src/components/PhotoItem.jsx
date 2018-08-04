@@ -10,7 +10,7 @@ const PhotoItem = (props) => {
       <div className="photo">
         <img src={props.photo} data-id={props.index} data-target="popup" alt="" onClick={props.onImgClick} />
       </div>
-      <div className="modal" id="popup" data-target="popup">
+      <div className="large-image-modal" id="popup" data-target="popup">
         <div className="modal-content">
           <Arrow direction="left" clickFunc={props.previousSlide} glyph="&#9664;" />
           <ImageSlide url={props.url} />

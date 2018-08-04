@@ -54,7 +54,7 @@ class App extends React.Component {
   }
 
   getRestaurantPhotos(restaurantId) {
-    axios.get(`/restaurant/photos/${restaurantId}`)
+    axios.get(`http://ec2-34-201-243-233.compute-1.amazonaws.com/restaurant/${restaurantId}`)
       .then(results => this.setState({ photos: results.data }))
       .catch(err => console.log('ERROR', err));
   }
