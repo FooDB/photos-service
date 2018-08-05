@@ -3,6 +3,8 @@ import Arrow from './Carousel/Arrow';
 import Close from './Carousel/Close';
 import ImageSlide from './Carousel/ImageSlide';
 import Flag from './Carousel/Flag';
+import styles from './PhotoItem.css';
+
 
 const PhotoItem = (props) => {
   return (

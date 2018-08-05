@@ -1,0 +1,23 @@
+
+.slide-arrow-left {
+  left: 0;
+}
+
+.slide-arrow-right {
+  right: 0;
+}
+
+.slide-arrow-right, 
+.slide-arrow-left {
+  color: #999;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  font-family: icons;
+  speak: none;
+  font-style: normal;
+  font-weight: bold;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}

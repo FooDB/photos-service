@@ -17,17 +17,19 @@ app.use('/restaurant/:id', express.static('public'));
 
 app.get('/restaurant/photos/:restaurantId', (req, res) => {
   const id = Number(req.params.restaurantId);
-  db.getPhotos(id, (err, restaurant) => {
-    if (err) {
-      if (err === 404) {
-        res.status(404).send('Not Found');
+  if (id > 0 && id < 100) {
+    db.getPhotos(id, (err, restaurant) => {
+      if (err) {
+        if (err === 404) {
+          res.status(404).send('Not Found');
+        } else {
+          res.status(500).send('ERR', err);
+        }
       } else {
-        res.status(500).send('ERR', err);
+        res.send(restaurant[0].photoUrls);
       }
-    } else {
-      res.send(restaurant[0].photoUrls);
-    }
-  });
+    });
+  }
 });
 
 module.exports = app;

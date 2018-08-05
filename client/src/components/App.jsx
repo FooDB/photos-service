@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import PhotoList from './PhotoList';
+import styles from './App.css';
 
 const getIDFromURL = () => window.location.pathname.split('/')[2];
 
@@ -54,7 +55,7 @@ class App extends React.Component {
   }
 
   getRestaurantPhotos(restaurantId) {
-    axios.get(`http://ec2-34-201-243-233.compute-1.amazonaws.com/restaurant/${restaurantId}`)
+    axios.get(`http://ec2-34-201-243-233.compute-1.amazonaws.com/restaurant/photos/${restaurantId}`)
       .then(results => this.setState({ photos: results.data }))
       .catch(err => console.log('ERROR', err));
   }

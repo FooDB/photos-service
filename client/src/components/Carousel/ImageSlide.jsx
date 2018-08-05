@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ImageSlide.css';
 
 const ImageSlide = ({ url }) => {
   // const styles = {

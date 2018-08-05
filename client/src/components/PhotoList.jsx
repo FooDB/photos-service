@@ -1,5 +1,7 @@
 import React from 'react';
 import PhotoItem from './PhotoItem';
+import styles from './PhotoList.css';
+
 
 const PhotoList = (props) => {
   const grid = [];

@@ -1,0 +1,34 @@
+.photos-gallery {
+  padding: 0rem 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  height: 275px;
+  width: 634px;
+}
+
+.photos-gallery-header {
+  border-bottom: 1px solid #e1e1e1;
+  color: #333;
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  line-height: 32px;
+  margin: 0 0 16px;
+  padding-bottom: 16px;
+}
+
+.photos-gallery-header-subtext {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: auto 0 0 0;
+  color: #DA3743;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body.carousel-overflow-hidden {
+  overflow: hidden;
+}
