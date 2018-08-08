@@ -32,7 +32,6 @@ app.get('/restaurant/photos/:restaurantId', (req, res) => {
   }
 });
 
-// add a post request
 app.post('/api/restaurant', (req, res) => {
   const newRestaurant = {
     username: 'Edward Baeg',
@@ -51,11 +50,22 @@ app.post('/api/restaurant', (req, res) => {
 
 });
 
-// add a put request
-app.put('/restaurant/:id', (req, res) => {
+app.put('/api/restaurant/:id', (req, res) => {
   const { id } = req.params;
-  const { newName } = req.body;
-  res.send(`processed put request for id number ${id}`);
+  const update = {
+    username: 'Brian So',
+    description: 'This was ok',
+    createdAt: new Date(),
+    photoUrls: ['www.wikipedia.org'],
+  };
+
+  db.updatePhotos(id, update, (err) => {
+    if (err) {
+      res.status(500).send('error', err);
+    } else {
+      res.status(201).send(`processed put request for id number ${id}`);
+    }
+  });
 });
 
 // add a delete request
