@@ -1,6 +1,6 @@
-# Project Name
+# photos-module
 
-> Project description
+> Photos module for the Open Source Table project.
 
 ## Related Projects
 
@@ -37,3 +37,8 @@ npm install -g webpack
 npm install
 ```
 
+## REST API
+- GET `/api/restaurant/photos/:restaurantId`
+- POST `/api/restaurant`
+- PUT `/api/restaurant/:id`
+- DELETE `/api/restaurant/:id`
