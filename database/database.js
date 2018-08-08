@@ -24,9 +24,14 @@ const updatePhotos = (id, obj, cb) => {
   Photo.findOneAndUpdate(conditions, obj, cb);
 };
 
+const deletePhotos = (id, cb) => {
+  const conditions = { restaurantId: id };
+  Photo.deleteOne(conditions, cb);
+};
 
 module.exports = {
   getPhotos,
   addPhotos,
   updatePhotos,
+  deletePhotos,
 };
