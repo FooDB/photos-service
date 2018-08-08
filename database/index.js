@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/photos');
+mongoose.connect('mongodb://localhost/photos');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
