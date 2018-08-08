@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const db = require('../database/retrievePhoto.js');
+const db = require('../database/database.js');
 
 const app = express();
 
@@ -33,8 +33,22 @@ app.get('/restaurant/photos/:restaurantId', (req, res) => {
 });
 
 // add a post request
-app.post('/restaurant', (req, res) => {
-  res.send('processed post request');
+app.post('/api/restaurant', (req, res) => {
+  const newRestaurant = {
+    username: 'Edward Baeg',
+    description: 'This is so yummy',
+    createdAt: new Date(),
+    photoUrls: ['www.google.com'],
+  };
+
+  db.addPhotos(newRestaurant)
+    .then(data => {
+      res.status(201).send('processed post request');
+    })
+    .catch(err => {
+      res.status(500).send('error', err);
+    });
+
 });
 
 // add a put request
