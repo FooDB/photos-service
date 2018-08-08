@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/restaurant/:id', express.static('public'));
 
-app.get('/restaurant/photos/:restaurantId', (req, res) => {
+app.get('/api/restaurant/photos/:restaurantId', (req, res) => {
   const id = Number(req.params.restaurantId);
   if (id > 0 && id < 100) {
     db.getPhotos(id, (err, restaurant) => {
@@ -68,10 +68,15 @@ app.put('/api/restaurant/:id', (req, res) => {
   });
 });
 
-// add a delete request
-app.delete('restaurant/:id', (req, res) => {
+app.delete('/api/restaurant/:id', (req, res) => {
   const { id } = req.params;
-  res.send(`processed delete request for id number ${id}`);
+  db.deletePhotos(id, (err) => {
+    if (err) {
+      res.status(500).send('db error', error);
+    } else {
+      res.status(204).send(`processed delete request for id number ${id}`);
+    }
+  });
 });
 
 module.exports = app;
