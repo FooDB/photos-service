@@ -19,8 +19,14 @@ const addPhotos = (obj) => {
   return doc.save(obj);
 };
 
+const updatePhotos = (id, obj, cb) => {
+  const conditions = { restaurantId: id };
+  Photo.findOneAndUpdate(conditions, obj, cb);
+};
+
 
 module.exports = {
   getPhotos,
   addPhotos,
+  updatePhotos,
 };
