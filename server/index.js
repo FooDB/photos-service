@@ -32,4 +32,22 @@ app.get('/restaurant/photos/:restaurantId', (req, res) => {
   }
 });
 
+// add a post request
+app.post('/restaurant', (req, res) => {
+  res.send('processed post request');
+});
+
+// add a put request
+app.put('/restaurant/:id', (req, res) => {
+  const { id } = req.params;
+  const { newName } = req.body;
+  res.send(`processed put request for id number ${id}`);
+});
+
+// add a delete request
+app.delete('restaurant/:id', (req, res) => {
+  const { id } = req.params;
+  res.send(`processed delete request for id number ${id}`);
+});
+
 module.exports = app;
