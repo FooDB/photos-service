@@ -15,8 +15,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/restaurant/:id', express.static('public'));
 
-app.get('/api/restaurant/photos/:restaurantId', (req, res) => {
-  const id = Number(req.params.restaurantId);
+app.get('/api/restaurant/:id/photos', (req, res) => {
+  const id = Number(req.params.id);
   if (id > 0 && id < 100) {
     db.getPhotos(id, (err, restaurant) => {
       if (err) {
@@ -32,7 +32,7 @@ app.get('/api/restaurant/photos/:restaurantId', (req, res) => {
   }
 });
 
-app.post('/api/restaurant', (req, res) => {
+app.post('/api/restaurant/photos', (req, res) => {
   const newRestaurant = {
     username: 'Edward Baeg',
     description: 'This is so yummy',
@@ -50,7 +50,7 @@ app.post('/api/restaurant', (req, res) => {
 
 });
 
-app.put('/api/restaurant/:id', (req, res) => {
+app.put('/api/restaurant/:id/photos', (req, res) => {
   const { id } = req.params;
   const update = {
     username: 'Brian So',
@@ -68,13 +68,13 @@ app.put('/api/restaurant/:id', (req, res) => {
   });
 });
 
-app.delete('/api/restaurant/:id', (req, res) => {
+app.delete('/api/restaurant/:id/photos', (req, res) => {
   const { id } = req.params;
   db.deletePhotos(id, (err) => {
     if (err) {
       res.status(500).send('db error', error);
     } else {
-      res.status(204).send(`processed delete request for id number ${id}`);
+      res.status(200).send(`processed delete request for id number ${id}`);
     }
   });
 });

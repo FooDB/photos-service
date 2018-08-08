@@ -38,7 +38,7 @@ npm install
 ```
 
 ## REST API
-- GET `/api/restaurant/photos/:restaurantId`
-- POST `/api/restaurant`
-- PUT `/api/restaurant/:id`
-- DELETE `/api/restaurant/:id`
+- GET `/api/restaurant/:id/photos`
+- POST `/api/restaurant/photos`
+- PUT `/api/restaurant/:id/photos`
+- DELETE `/api/restaurant/:id/photos`
