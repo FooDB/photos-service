@@ -1,4 +1,5 @@
 const faker = require('faker');
+const fs = require('fs');
 
 const getRandomId = () => Math.floor(Math.random() * 500) + 1;
 
@@ -11,17 +12,26 @@ const getPhotoIds = () => {
   return ids;
 };
 
-const genData = (start, end) => {
-  let header = `id\tusername\tdescription\tcreatedAt\tphotoUrls`;
+fs.readFile('names.csv', (error, data) => {
+  if (error) {
+    console.log(error);
+  }
+  const dataArr = data.toString().split('\n');
+  genData(1, 5000000, dataArr);
+});
+
+const genData = (start, end, nameArr) => {
+  let header = `id\trestaurantName\tusername\tdescription\tcreatedAt\tphotoUrls`;
   console.log(header);
   for (let i = start; i <= end; i += 1) {
     const id = i + '\t';
+    const restName = nameArr[i] + '\t';
     const name = `${faker.name.firstName()} ${faker.name.lastName()}` + '\t';
     const name2 = faker.commerce.productName() + '\t';
     const date = faker.date.past() + '\t';
     const urls = JSON.stringify(getPhotoIds());
-    console.log(`${id}${name}${name2}${date}${urls}`);
+    console.log(`${id}${restName}${name}${name2}${date}${urls}`);
   }
 };
 
-genData(5000001, 10000000);
+// genData(5000001, 10000000);
