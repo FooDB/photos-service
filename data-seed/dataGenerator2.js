@@ -33,5 +33,3 @@ const genData = (start, end, nameArr) => {
     console.log(`${id}${restName}${name}${name2}${date}${urls}`);
   }
 };
-
-// genData(5000001, 10000000);
