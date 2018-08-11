@@ -11,6 +11,7 @@
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/app.js",
     "seed": "node data-seed/dataGenerator.js",
+    "seed-post": "psql -U edwardbaeg -d edwardbaeg -a -f schema.sql",
     "test": "jest --coverage",
     "load": "node data-seed/dataGenerator.js && node server/app.js",
     "grunt": "grunt s3"
