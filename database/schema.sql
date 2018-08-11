@@ -10,7 +10,7 @@ CREATE TABLE restaurants (
   photoUrls VARCHAR (500)
 );
 
-\COPY restaurants FROM 'data_seedtest.tsv' DELIMITER E'\t';
+\COPY restaurants FROM 'combined.tsv' DELIMITER E'\t';
 
 SELECT setval(pg_get_serial_sequence('restaurants', 'id'), MAX(id)) FROM restaurants;
 
@@ -20,4 +20,4 @@ CREATE TABLE photos (
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 
-\COPY photos FROM 'data_test_photos.tsv' DELIMITER E'\t';
+\COPY photos FROM 'combined_photos.tsv' DELIMITER E'\t';
