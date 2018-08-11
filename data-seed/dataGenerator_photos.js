@@ -18,4 +18,4 @@ const genData = (start, end) => {
 };
 
 // note: only do 5 million at a time
-genData(5000001, 10000000);
+genData(1, 1000);
