@@ -21,5 +21,5 @@ CREATE TABLE IF NOT EXISTS photos (
 );
 
 COPY photos (id, restaurant_name, username, description, created_at, photo_urls)
-FROM 'data_seedtest.tsv'
+FROM 'combined.tsv'
 WITH DELIMITER='\t';
