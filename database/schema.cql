@@ -10,16 +10,16 @@ USE foodb;
 
 DROP TABLE IF EXISTS foodb.photos;
 
-CREATE TABLE IF NOT EXISTS photos (
+CREATE TABLE IF NOT EXISTS photos_names (
   id int,
   restaurant_name text,
   username text,
   description text,
   created_at text,
   photo_urls set<int>,
-  PRIMARY KEY (id)
+  PRIMARY KEY (restaurant_name)
 );
 
-COPY photos (id, restaurant_name, username, description, created_at, photo_urls)
+COPY photos_names (id, restaurant_name, username, description, created_at, photo_urls)
 FROM 'combined.tsv'
 WITH DELIMITER='\t';
