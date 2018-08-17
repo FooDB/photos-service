@@ -8,6 +8,12 @@ const getById = (id) => {
   return client.execute(query, params, { prepare: true });
 };
 
+const addPhoto = (restaurantId, photoId) => {
+  const query = `UPDATE photos SET photo_urls = photo_urls + { ${photoId} } WHERE id = ${restaurantId}`;
+  return client.execute(query);
+};
+
 module.exports = {
   getById,
+  addPhoto,
 };
