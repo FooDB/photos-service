@@ -24,16 +24,18 @@ COPY photos (id, restaurant_name, username, description, created_at, photo_urls)
 FROM 'combined.tsv'
 WITH DELIMITER='\t';
 
-CREATE TABLE IF NOT EXISTS photo_names (
-  id int,
-  restaurant_name text,
-  username text,
-  description text,
-  created_at text,
-  photo_urls set<int>,
-  PRIMARY KEY (restaurant_name)
-);
+CREATE MATERIALIZED VIEW photo_names2 AS SELECT photo_urls, restaurant_name FROM photos WHERE restaurant_name IS NOT NULL AND ID IS NOT NULL PRIMARY KEY (restaurant_name, id);
 
-COPY photo_names (id, restaurant_name, username, description, created_at, photo_urls)
-FROM 'combined.tsv'
-WITH DELIMITER='\t';
+/* CREATE TABLE IF NOT EXISTS photo_names ( */
+/*   id int, */
+/*   restaurant_name text, */
+/*   username text, */
+/*   description text, */
+/*   created_at text, */
+/*   photo_urls set<int>, */
+/*   PRIMARY KEY (restaurant_name) */
+/* ); */
+
+/* COPY photo_names (id, restaurant_name, username, description, created_at, photo_urls) */
+/* FROM 'combined.tsv' */
+/* WITH DELIMITER='\t'; */
