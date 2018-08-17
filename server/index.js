@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 
 const app = express();
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -26,6 +28,17 @@ app.get('/api/restaurant/:id/photos', (req, res) => {
     .catch((error) => {
       console.log(error);
       res.status(404).send(error);
+    });
+});
+
+app.post('/api/restaurant/:id/addPhoto', (req, res) => {
+  const { id } = req.params;
+  const { photoId } = req.body;
+  db.addPhoto(id, photoId)
+    .then(() => res.status(201).send())
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
     });
 });
 
