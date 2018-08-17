@@ -24,18 +24,7 @@ COPY photos (id, restaurant_name, username, description, created_at, photo_urls)
 FROM 'combined.tsv'
 WITH DELIMITER='\t';
 
-CREATE MATERIALIZED VIEW photo_names2 AS SELECT photo_urls, restaurant_name FROM photos WHERE restaurant_name IS NOT NULL AND ID IS NOT NULL PRIMARY KEY (restaurant_name, id);
+CREATE MATERIALIZED VIEW photo_names AS SELECT photo_urls, restaurant_name FROM photos WHERE restaurant_name IS NOT NULL AND ID IS NOT NULL PRIMARY KEY (restaurant_name, id);
 
-/* CREATE TABLE IF NOT EXISTS photo_names ( */
-/*   id int, */
-/*   restaurant_name text, */
-/*   username text, */
-/*   description text, */
-/*   created_at text, */
-/*   photo_urls set<int>, */
-/*   PRIMARY KEY (restaurant_name) */
-/* ); */
-
-/* COPY photo_names (id, restaurant_name, username, description, created_at, photo_urls) */
-/* FROM 'combined.tsv' */
-/* WITH DELIMITER='\t'; */
+/* Run this optimiziation in the console */
+/* ALTER TABLE photos with compaction = { 'class' : 'SizeTieredCompactionStrategy' }; */
