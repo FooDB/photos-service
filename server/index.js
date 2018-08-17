@@ -16,20 +16,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/restaurant/:id', express.static('public'));
 
 app.get('/api/restaurant/:id/photos', (req, res) => {
-  const id = Number(req.params.id);
-  if (id > 0 && id < 100) {
-    db.getById(id, (err, restaurant) => {
-      if (err) {
-        if (err === 404) {
-          res.status(404).send('Not Found');
-        } else {
-          res.status(500).send('ERR', err);
-        }
-      } else {
-        res.send(restaurant[0].photoUrls);
-      }
+  const { id } = req.params;
+  db.getById(id)
+    .then((data) => {
+      const ids = data.rows[0].photo_urls;
+      const urls = ids.map(photoId => `https://s3-us-west-1.amazonaws.com/system-design-capstone/${photoId}.jpg`);
+      res.status(200).send(urls);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(404).send(error);
     });
-  }
 });
 
 // app.post('/api/restaurant/photos', (req, res) => {
