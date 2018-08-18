@@ -26,8 +26,10 @@
     "grunt-aws": "^0.6.2",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.4",
+    "newrelic": "^4.8.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "redis": "^2.8.0",
     "request": "^2.87.0"
   },
   "devDependencies": {
@@ -52,6 +54,7 @@
     "jest": "^23.4.2",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3",
+    "siege": "^0.2.0",
     "style-loader": "^0.21.0",
     "supertest": "^3.1.0",
     "webpack": "^4.16.1",
