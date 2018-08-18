@@ -1,7 +1,7 @@
 const siege = require('siege');
 
 const getRandomId = () => {
-  return Math.floor(Math.random() * 10000000) + 1;
+  return Math.floor(Math.random() * 1000000) + 9000000;
 };
 
 let holder = siege().concurrent(20).on(3002);
